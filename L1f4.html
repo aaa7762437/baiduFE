@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        #demo{
+            height: 200px;
+            width: 400px;
+            margin: 0 auto;
+            position: relative;
+            top:50%;
+            transform: translateY(-50%);
+            /*有多种方法，也可以用自身长宽的一半作为负边距移动*/
+            background-color: #ccc;
+            overflow: hidden;
+        }
+        /*做两个扇形*/
+        #lt{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            /*这里用absolute 和relative都可以，下面的就不行，因为它原来的位置和它相对不是静态定位的父元素的位置不一样
+            好吧，有点绕*/
+            top: -50px;
+            left: -50px;
+            background-color: #fc0;
+            border-radius: 50px;
+        }
+        #rb{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            right: -50px;
+            bottom: -50px;
+            /*这里硬性要求50px,当窗口小于DIV宽高时，右侧扇形就会变形*/
+            background-color: #fc0;
+            border-radius: 50px;
+
+        }
+        /*窗口小于方块宽400px时将方块宽设置为100%，防止看不到右下角的扇形*/
+        @media (max-width: 400px) {
+            #demo{
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div id="lt"></div>
+        <div id="rb"></div>
+    </div>
+
+</body>
+</html>
